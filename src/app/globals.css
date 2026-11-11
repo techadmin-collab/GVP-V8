@@ -26,7 +26,7 @@ html {
 }
 
 section[id] {
-  scroll-margin-top: 90px;
+  scroll-margin-top: 110px;
 }
 
 img {
@@ -268,4 +268,20 @@ img {
   [data-tilt] {
     transform: none !important;
   }
+}
+
+/* v8 passport: page-turn and stamp motion */
+@keyframes gvp8-turn {
+  from { transform: perspective(1400px) rotateY(-75deg); opacity: 0.2; }
+  to { transform: perspective(1400px) rotateY(0deg); opacity: 1; }
+}
+@keyframes gvp8-stamp {
+  0% { transform: scale(1.6) rotate(var(--r, -8deg)); opacity: 0; }
+  60% { transform: scale(0.94) rotate(var(--r, -8deg)); opacity: 1; }
+  100% { transform: scale(1) rotate(var(--r, -8deg)); opacity: 1; }
+}
+.gvp8-turn { transform-origin: 0% 50%; animation: gvp8-turn 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.gvp8-stamp { animation: gvp8-stamp 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) 0.35s both; }
+@media (prefers-reduced-motion: reduce) {
+  .gvp8-turn, .gvp8-stamp { animation: none !important; }
 }
